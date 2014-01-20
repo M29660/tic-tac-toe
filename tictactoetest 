@@ -1,0 +1,10 @@
+def check_winner_columns(player_symbol)
+
+if base_number = 0 
+	column1    = [board[base_number], board[base_number+3], board[base_number+6]]
+	elseif base_number = 1
+	column1    = [board[base_number], board[base_number+3], board[base_number+6]]
+else base_number = 2
+	column1    = [board[base_number], board[base_number+3], board[base_number+6]]
+end
+

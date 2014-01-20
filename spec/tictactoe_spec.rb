@@ -1,3 +1,4 @@
+require 'tictactoe.rb'
 
 def game 
 	@game ||= TicTacToeGame.new
