@@ -6,82 +6,121 @@ end
 
 describe TicTacToeGame do
 
-	it "Initialize the game" do
-		game.should be_instance_of TicTacToeGame
-	end
+	context 'Initialize the game' do
+  	
+		it "The game start" do
+			game.should be_instance_of TicTacToeGame
+		end
 
-	it "the board should be blank" do
-		game.is_board_empty.should be(true)	
-	end
+		it "The board should be blank" do
+  			expect(game.is_board_empty).to be_true
+  		end
+end	
 
-	it "player move" do
+	context 'player move' do
+
+		it "player takes their move" do
 		testBoard = ["X","O"," "," "," "," "," "," "," "]
 		game.player_moves('X', 0)
 		game.player_moves('O', 1)
-		game.board.should eq(testBoard)
+		expect (game.board).should eq(testBoard)
 	end
-	
-	it "player moves in a taken position" do
+end
+
+	context 'position taken' do
+
+		it "player moves in a taken position" do
 		testBoard = ["X"," "," "," "," "," "," "," "," "]
 		game.player_moves('X', 0)
 		game.player_moves('O', 0)
-		game.board.should eq(testBoard)
+		expect (game.board).should eq(testBoard)
+	
 	end
+end
 
-	it "player wins in a row" do
-		game.player_moves('X', 0)
-		game.player_moves('X', 1)
-		game.player_moves('X', 2)
-		game.check_winner_rows('X').should be(true)
-	end
+	context 'when winning row' do
 
-	it "Row is full, no winner" do
+		it " shows a player with a winning row" do
 		game.player_moves('X', 0)
 		game.player_moves('O', 1)
 		game.player_moves('X', 2)
-		game.check_winner_rows('X').should be(false)	
+		game.player_moves('X', 3)
+		game.player_moves('X', 4)
+		game.player_moves('X', 5)
+		expect(game.check_winner_rows('X')).to be_true
 	end
+end
 
-	it "player wins in a column" do
+	context 'Row full there is no winner' do
+
+		it "shows row is full, no winner" do
+		game.player_moves('X', 0)
+		game.player_moves('O', 1)
+		game.player_moves('X', 2)
+		expect(game.check_winner_rows('X')).to be_false	
+
+	end
+end
+
+	context 'Column has winning column' do
+
+		it "winning player column" do
 		game.player_moves('X', 2)
 		game.player_moves('X', 5)
 		game.player_moves('X', 8)
-		game.check_winner_columns('X').should be(true)
+		expect(game.check_winner_columns('X')).to be_true
 	end
+end
 
-	it "Column is full, no winner" do
+	context 'Column is full there is no winner' do
+
+		it "Column is full, no winner" do
 		game.player_moves('X', 0)
 		game.player_moves('O', 3)
 		game.player_moves('X', 6)
-		game.check_winner_rows('X').should be(false)	
+		expect(game.check_winner_rows('X')).to be_false	
 	end
+end
 
-	it "player wins in a diagonal" do
+	context 'winning player diagonal line' do
+
+		it "winning diagonal line" do
 		game.player_moves('X', 0)
 		game.player_moves('X', 4)
 		game.player_moves('X', 8)
-		game.check_winning_diagonal('X').should be(true)
+		expect(game.check_winning_diagonal('X')).to be_true
 	end
+end
 
-	it "diagonal full, no winners" do
+	context 'no winners on a diagonal line' do
+
+		it "diagonal full, no winners" do
 		game.player_moves('X', 0)
 		game.player_moves('O', 4)
 		game.player_moves('X', 8)
-		game.check_winning_diagonal('X').should be(false)
+		expect(game.check_winning_diagonal('X')).to be_false
 	end
+end
 
-	it "player wins in a anti_diagonal" do
+	context 'anti diagonal line winner' do
+
+		it "winning anti_diagonal line" do
 		game.player_moves('X', 2)
 		game.player_moves('X', 4)
 		game.player_moves('X', 6)
-		game.check_winning_anti_diagonal('X').should be(true)
+		expect(game.check_winning_anti_diagonal('X')).to be_true
 	end
+end
+
+	context 'anti diagonal line no winners' do
 
 	it "anti diagonal full, no winners" do
 		game.player_moves('X', 0)
 		game.player_moves('O', 4)
 		game.player_moves('X', 8)
-		game.check_winning_diagonal('X').should be(false)
+		expect(game.check_winning_diagonal('X')).to be_false
 	end
+end
+
 
 end
