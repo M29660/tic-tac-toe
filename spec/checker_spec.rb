@@ -111,5 +111,4 @@ describe '.anti diagonal with no winners'	do
 			expect(checker.player_win?(T_Constants::X_MARK, game.board)).to be_false
 		end
 	end
-
 end

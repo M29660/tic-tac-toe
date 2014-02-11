@@ -27,4 +27,4 @@ describe '.player_move' do
   		expect(game.player_move(T_Constants::X_MARK, 3)).to be_false
 	 	end
   end
-end
+ end

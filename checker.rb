@@ -46,6 +46,11 @@ private
 
 	def winning_anti_diagonal?(player_symbol, board)
 		(board[2] == player_symbol) && (board[4] == player_symbol) && (board[6] == player_symbol)
-	end	
+	end
+
+#	private
+#	def winning?(*positions)
+#		positions.each { |position| board[position] == player_symbol }
+#	end	
 
 end
